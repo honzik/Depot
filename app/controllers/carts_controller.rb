@@ -19,10 +19,18 @@ class CartsController < ApplicationController
 			logger.error "Attempt to access invalid cart #{params[:id]}"	
 			redirect_to	store_url,	:notice => "Invalid cart"
 		else
-		  respond_to do |format|
-		    format.html # show.html.erb
-		    format.xml  { render :xml => @cart }
-    	end
+		  if @cart.line_items.count.zero?
+        respond_to do |format|
+          format.html { redirect_to(store_url,
+            :notice => 'Your cart is currently empty') }
+          format.xml  { head :ok }
+        end
+      else
+        respond_to do |format|
+          format.html # show.html.erb
+          format.xml  { render :xml => @cart }
+        end
+      end
    	end
   end
 

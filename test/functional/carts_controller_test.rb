@@ -20,7 +20,6 @@ class CartsControllerTest < ActionController::TestCase
     assert_difference('Cart.count') do
       post :create, :cart => @cart.attributes
     end
-
     assert_redirected_to cart_path(assigns(:cart))
   end
 

@@ -43,7 +43,8 @@ class LineItemsControllerTest < ActionController::TestCase
     assert_difference('LineItem.count', -1) do
       delete :destroy, :id => @line_item.to_param
     end
-
-    assert_redirected_to line_items_path
+		if @line_item.invalid?
+			assert_redirected_to store_url_path			
+		end     
   end
 end
