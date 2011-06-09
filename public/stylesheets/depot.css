@@ -111,6 +111,11 @@
   margin-right: 2em;
 }
 
+#store .entry form,
+#store .entry form div {
+  display: inline;
+}
+
 /* Styles for main */
 #banner {
   background: #9c9;
@@ -151,7 +156,9 @@
   font-size: small;
 }
 
-
+#side p {
+  color: #eee;
+}
 
 
 
