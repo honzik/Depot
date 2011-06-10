@@ -111,6 +111,12 @@
   margin-right: 2em;
 }
 
+#store .entry .product_image {
+  float: left;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+} 
+
 #store .entry form,
 #store .entry form div {
   display: inline;
