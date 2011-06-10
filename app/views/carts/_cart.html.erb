@@ -1,0 +1,16 @@
+<h2>Your cart</h2>
+
+<% if notice %> 
+  <p id="notice"><%= notice %></p> 
+<% end %>
+
+<table>
+  <%= render(cart.line_items) %>
+  <tr class="total_line">
+    <td colspan="2">Total</td>
+    <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+    <td></td>
+  </tr>
+</table>
+
+<%= button_to 'Empty Cart', cart, :method => :delete, :confirm => 'Sure?' %>
