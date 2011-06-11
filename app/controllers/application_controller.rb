@@ -21,5 +21,6 @@ class ApplicationController < ActionController::Base
 			session[:counter] = 0
 		end
 			
-
+		
+		
 end

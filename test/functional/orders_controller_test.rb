@@ -2,6 +2,9 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
+    #if Order.get_payment_types.empty?
+    #	Order.init_payment_types ["Cheque", "Credit card"]
+   	#end
     @order = orders(:one)
   end
 
