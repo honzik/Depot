@@ -53,7 +53,8 @@ class OrdersController < ApplicationController
       if @order.save
       	Cart.destroy(session[:cart_id])
       	session[:cart_id] = nil
-        format.html { redirect_to(store_url, :notice => 'Thank you for your order!') }
+   			Notifier.order_received(@order).deliver
+   			format.html { redirect_to(store_url, :notice => 'Thank you for your order!') }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
         format.html { render :action => "new" }
