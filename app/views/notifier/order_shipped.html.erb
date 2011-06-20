@@ -9,6 +9,6 @@
     <th>Description</th>
   </tr>
   
-  <%= render  @order.line_items %>
+  <%= render 'line_items/line_item_email', :line_items => @order.line_items %>
 
 </table>
