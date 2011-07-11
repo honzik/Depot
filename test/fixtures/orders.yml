@@ -5,6 +5,7 @@ one:
   address: MyText
   email: dave@example.org
   pay_type: Cheque
+  ship_date: 2011-07-19
 
 two:
   name: MyString
