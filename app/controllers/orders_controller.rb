@@ -13,11 +13,17 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.xml
   def show
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @order }
+    begin
+      @order = Order.find(params[:id])       
+    rescue ActiveRecord::RecordNotFound
+      logger.error("Attempt to show invalid order, admin notified")      
+      Error.invalid_order(params[:id]).deliver
+      redirect_to store_url, :notice => "Invalid order specified"      
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @order }
+      end
     end
   end
 
