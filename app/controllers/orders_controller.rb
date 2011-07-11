@@ -66,10 +66,13 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.xml
   def update
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
+    @order = Order.find(params[:id])    
+    ship_date_old = @order.ship_date
+    respond_to do |format|      
       if @order.update_attributes(params[:order])
+        if @order.ship_date != ship_date_old
+          Notifier.order_shipchange(@order).deliver  
+        end
         format.html { redirect_to(@order, :notice => 'Order was successfully updated.') }
         format.xml  { head :ok }
       else

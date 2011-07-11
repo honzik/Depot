@@ -1,0 +1,5 @@
+<h3>Dear <%= @order.name %>,</h3>
+
+<p>We inform you of a shipping date change in your Pragmatic Store Order.</p>
+
+<p>New shipping date is <%= @order.ship_date.strftime("%A, %d/%m/%y") %>.</p>
