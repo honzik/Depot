@@ -8,6 +8,15 @@ class User < ActiveRecord::Base
   # custom validator of password presence
   validate  :password_must_be_present
   
+  # protection against remove of last admin - transaction
+  after_destroy :ensure_ad_admin_remains
+  
+  def ensure_ad_admin_remains
+    if User.count.zero?
+      raise "Can't delete last user!"
+    end
+  end
+    
   # authenticator
   # @return user object
   def User.authenticate(name, password)
