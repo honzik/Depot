@@ -9,12 +9,12 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  def login_as(user)
-    session[:user_id] = users(user).id
+  def login_as(user_tag)
+    session[:user_id] = users(user_tag).id
   end
   
   def logout
-    session_delete  :user_id
+    session.delete  :user_id
   end
     
   def setup
