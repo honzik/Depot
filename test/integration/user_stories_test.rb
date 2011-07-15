@@ -75,8 +75,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     assert_equal '/admin', path
     
     delete_via_redirect("/logout")
-    assert_response :success            
-    assert_equal '/en', path         
+    assert_response :success                   
   end
   
   # sending error on failure of orders
@@ -103,7 +102,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
         
 
     # assemble path manually
-    our_order_path = '/en/orders/' + order.id.to_s 
+    our_order_path = '/orders/' + order.id.to_s 
     edit_path =  our_order_path + '/edit'
     
     # manual call to edit
