@@ -76,7 +76,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     
     delete_via_redirect("/logout")
     assert_response :success            
-    assert_equal '/', path         
+    assert_equal '/en', path         
   end
   
   # sending error on failure of orders
@@ -101,9 +101,13 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     log_user_in
     order = orders(:one)
         
-    # get index
-    get edit_order_path(order)
+
+    # assemble path manually
+    our_order_path = '/en/orders/' + order.id.to_s 
+    edit_path =  our_order_path + '/edit'
     
+    # manual call to edit
+    get edit_path
     assert_response :success
     assert_template "edit"
     
@@ -116,7 +120,8 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
                   :ship_date=> order.ship_date + 1
                   }
 
-    put_via_redirect order_path(order), :order => edited_order    
+    # manual call to save
+    put_via_redirect our_order_path, :order => edited_order    
     mail = ActionMailer::Base.deliveries.last
     assert_equal [edited_order[:email]], mail.to
     assert_match /ship date changed/, mail.subject  

@@ -6,7 +6,7 @@
 <p>Accessed: <%= pluralize @count, "time" %></p>
 <% end %>
 
-<h1>Fancy catalog</h1>
+<h1><%= t '.title_html' %></h1>
 <% @products.each do |product| %>
   <div class="entry">
     <%= form_tag line_items_path(:product_id => product), :remote => true do %>   
@@ -18,7 +18,7 @@
     <%= sanitize(product.description) %>
     <div class="price_line">
       <span class="price"><%= number_to_currency(product.price) %></span>
-      <%= button_to 'Add to Cart', line_items_path(:product_id => product),
+      <%= button_to t('.add_html'), line_items_path(:product_id => product),
           :remote => true %>
     </div>
   </div>

@@ -2,4 +2,36 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  
+  layouts:
+    application:
+      title:      "Jeník's Pragmatic Programmer Store"
+      home:       "Home"
+      questions:  "Questions"
+      news:       "News"
+      contact:    "Contact"
+      
+  store:
+    index:
+      title_html: "Fancy catalog"
+      add_html:   "Add to Cart"
+      
+  carts:
+    cart:
+      cart_title: "Your cart"
+      checkout:   "Checkout"
+      empty:      "Empty Cart"
+      
+  orders:
+    new:
+      legend:     "Please enter Your details"
+    form:
+      name_html:  "Name"
+      address_html: "Address"
+      email_html:   "E-mail"
+      pay_type_html:  "Pay with"
+      pay_prompt_html:  "Select a payment method"
+      submit:           "Place Order"
+      
+  thanks:     "Thank you for your order!"
+    
