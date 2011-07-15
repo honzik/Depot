@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  helper :application
   default :from => "rails@noreply.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
