@@ -5,7 +5,7 @@
 <% end %>
     <td><%= line_item.quantity %>&times;</td>
     <td><%= line_item.product.title %></td>
-    <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+    <td class="item_price"><%= format_price(line_item.total_price) %></td>
     <td><%= button_to 'X', line_item, :method => :delete, :remote => true %></td>
  </tr>
 

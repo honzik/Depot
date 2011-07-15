@@ -11,5 +11,9 @@ module ApplicationHelper
 	 	end
 	 	content_tag("div", attributes, &block)
  	end
+ 	
+ 	def format_price(number)
+ 	  number_to_currency(ExchangeRate.convert_value(number))
+  end
 	
 end

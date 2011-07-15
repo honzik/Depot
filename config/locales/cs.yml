@@ -59,3 +59,12 @@ cs:
   cc:         "Kreditní karta"
   pp:         "Platební příkaz"
   chq:        "Šek"
+  
+  number:
+    currency:
+      format:
+        unit:       "Kč"
+        precision:  2
+        separator:  ","
+        delimiter:  "."
+        format:     "%n %u"

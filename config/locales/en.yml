@@ -37,3 +37,12 @@ en:
   cc:         "Credit card"
   pp:         "Payment order"
   chq:        "Cheque"  
+  
+  number:
+    currency:
+      format:
+        unit:       "$"
+        precision:  2
+        separator:  "."
+        delimiter:  ","
+        format:     "%u%n"
