@@ -56,3 +56,6 @@ cs:
         other:  "Počet chyb bránících zpracování: %{count}"
         
   thanks:     "Děkujeme za vaši objednávku!"
+  cc:         "Kreditní karta"
+  pp:         "Platební příkaz"
+  chq:        "Šek"

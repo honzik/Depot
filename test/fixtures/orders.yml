@@ -4,7 +4,7 @@ one:
   name: Dave Thomas
   address: MyText
   email: dave@example.org
-  pay_type: Cheque
+  pay_type: chq
   ship_date: 2011-07-19
 
 two:

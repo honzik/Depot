@@ -36,7 +36,7 @@ class UserStoriesTest < ActionDispatch::IntegrationTest
     new_order = { :name     => "Honzik Maly", 
                   :address  => "Koutovice 225",
                   :email    => "honzik@localhost",
-                  :pay_type => "Cheque"   }
+                  :pay_type => "chq"   }
     
     # then check out
     get "/orders/new"
