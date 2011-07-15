@@ -6,8 +6,7 @@ class SessionsController < ApplicationController
 
   def create    
         
-    # create user if params given and no user in database yet
-    alert = ''
+    # create user if params given and no user in database yet    
     if User.count == 0
       user_created = User.create(:name => params[:name], :password => params[:password])
       if user_created.id.nil?
@@ -24,7 +23,7 @@ class SessionsController < ApplicationController
     # authenticate user    
     if user = User.authenticate(params[:name], params[:password])
       session[:user_id] = user.id            
-      redirect_to admin_url, :alert => alert 
+      redirect_to admin_url
     else
       redirect_to login_url, :alert => "Invalid user/password combination"
     end

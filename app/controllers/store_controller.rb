@@ -4,7 +4,7 @@ class StoreController < ApplicationController
     if params[:set_locale]
       redirect_to store_path(:locale => params[:set_locale])
     else
-      @products = Product.all
+      @products = Product.find_all_by_locale(I18n.locale)
     	@count = increment_count
     	@cart = current_cart
   	end
