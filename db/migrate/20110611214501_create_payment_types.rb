@@ -4,10 +4,6 @@ class CreatePaymentTypes < ActiveRecord::Migration
       t.string :name
       t.timestamps
     end
-
-    PaymentType.create(:name => 'Cheque')
-    PaymentType.create(:name => 'Credit card')
-    PaymentType.create(:name => 'Purchase order')
   end
 
   def self.down
