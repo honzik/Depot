@@ -26,6 +26,11 @@ set :deploy_to, "/home/honzik/rails_apps/#{domain}"
 
 # z knihy ADWR
 namespace :deploy do
+  desc "chmod on log directory"
+  task :chmod do
+    run "sudo chmod 0777 #{current_path}/log"
+  end
+  
   desc "cause passenger to init a restart"
   task :restart do
     run "touch #{current_path}/tmp/restart.txt"

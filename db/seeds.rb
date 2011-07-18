@@ -7,7 +7,25 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 # encoding: utf-8
+
+
+# helper to truncate
+def truncate_db_table(table)
+ config = ActiveRecord::Base.configurations[Rails.env]
+ ActiveRecord::Base.establish_connection
+ case config["adapter"]
+  when "mysql"
+    ActiveRecord::Base.connection.execute("TRUNCATE #{table}")
+  when "sqlite", "sqlite3"
+    ActiveRecord::Base.connection.execute("DELETE FROM #{table}")
+    ActiveRecord::Base.connection.execute("DELETE FROM sqlite_sequence where name='#{table}'")
+    ActiveRecord::Base.connection.execute("VACUUM")
+ end
+end
+
+
 Product.delete_all
+truncate_db_table("products")
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
@@ -46,7 +64,8 @@ Product.create(:title => 'Rails Test Prescriptions',
   :image_url => '/images/rtp.jpg',
   :price => 43.75)
 
-PaymentType.delete_all  
+PaymentType.delete_all 
+truncate_db_table("payment_types") 
 PaymentType.create(:name => 'chq')
 PaymentType.create(:name => 'cc')
 PaymentType.create(:name => 'pp')
